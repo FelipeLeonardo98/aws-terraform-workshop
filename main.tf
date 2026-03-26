@@ -7,5 +7,5 @@ resource "aws_ssm_parameter" "control-environment-dev" {
 resource "aws_ssm_parameter" "control-environment-hom" {
   name = "foo-hom"
   type = "String"
-  value = "homologation-v2"
+  value = "homologation-v3"
 }
