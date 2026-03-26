@@ -20,7 +20,7 @@ data "aws_s3_bucket" "tfstate_bucket" {
   bucket = "474668425182-github-oidc-terraform-tfstate"
 }
 
-module "lambda_2" {
-  source = "./module"
+# module "lambda_2" {
+#   source = "./module"
   
-}
+# }
