@@ -14,4 +14,5 @@ resource "aws_lambda_alias" "this" {
   name             = var.alias_name
   function_name    = aws_lambda_function.this.function_name
   function_version = aws_lambda_function.this.version
+  depends_on = [ aws_lambda_function.this ]
 }
