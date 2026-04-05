@@ -6,8 +6,8 @@ resource "aws_lambda_function" "this" {
 
   publish = true
 
-  timeout = 10
-  memory_size = 128
+  #timeout = 10
+  memory_size = 500
 }
 
 resource "aws_lambda_alias" "this" {
