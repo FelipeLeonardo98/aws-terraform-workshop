@@ -30,7 +30,7 @@ module "lambda_v1" {
 
   image_uri = "${module.ecr.repository_url}:v1"
 
-  alias_name = "v1.0.0"
+  alias_name = "prod"
 
   depends_on = [ module.ecr, module.iam-settings ]
 }
