@@ -28,9 +28,23 @@ module "lambda_v1" {
   function_name   = "hello-lambda-mlops"
   lambda_role_arn = module.iam-settings.role_arn
 
-  image_uri = "${module.ecr.repository_url}:v1"
+  image_uri = "${module.ecr.repository_url}:v2"
 
-  alias_name = "prod"
+  #alias_name = "prod"
+  # aliases = {
+  #   "prod" = "2"
+  #   "dev" = "$LATEST"
+  # }
 
+  aliases = {
+    prod = {
+        version = "2"
+        additional_weights = {
+          # "2" = 0.4
+          "3" = 0.2
+        }
+    }
+    dev = {version = "$LATEST"}
+  }
   depends_on = [ module.ecr, module.iam-settings ]
 }

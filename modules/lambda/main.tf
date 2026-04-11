@@ -11,8 +11,19 @@ resource "aws_lambda_function" "this" {
 }
 
 resource "aws_lambda_alias" "this" {
-  name             = var.alias_name
+  for_each = var.aliases
+
+  name             = each.key
   function_name    = aws_lambda_function.this.function_name
-  function_version = aws_lambda_function.this.version
+  function_version = each.value.version
+
+  dynamic "routing_config" {
+    for_each = each.value.additional_weights != null ? [1] : []
+
+    content {
+      additional_version_weights = each.value.additional_weights
+    }
+  }
+  
   depends_on = [ aws_lambda_function.this ]
 }

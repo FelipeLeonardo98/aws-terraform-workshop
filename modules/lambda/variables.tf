@@ -12,4 +12,12 @@ variable "image_uri" {
 
 variable "alias_name" {
   type = string
+  default = null
+}
+
+variable "aliases" {
+  type = map(object({
+    version             = string
+    additional_weights  = optional(map(number))
+  }))
 }
