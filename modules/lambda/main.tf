@@ -18,7 +18,7 @@ resource "aws_lambda_alias" "this" {
   function_version = each.value.version
 
   dynamic "routing_config" {
-    for_each = each.value.additional_weights != null ? [1] : []
+    for_each = length(each.value.additional_weights) > 0 ? [1] : []
 
     content {
       additional_version_weights = each.value.additional_weights

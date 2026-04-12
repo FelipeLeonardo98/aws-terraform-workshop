@@ -44,7 +44,10 @@ module "lambda_v1" {
           "3" = 0.2
         }
     }
-    dev = {version = "$LATEST"}
+    dev = {
+      version = "$LATEST"
+      additional_weights = {}
+    }
   }
   depends_on = [ module.ecr, module.iam-settings ]
 }

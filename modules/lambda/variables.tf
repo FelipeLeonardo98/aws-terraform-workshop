@@ -18,6 +18,6 @@ variable "alias_name" {
 variable "aliases" {
   type = map(object({
     version             = string
-    additional_weights  = optional(map(number))
+    additional_weights = map(number)
   }))
 }
