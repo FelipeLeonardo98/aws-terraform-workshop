@@ -28,24 +28,18 @@ module "lambda_v1" {
   function_name   = "hello-lambda-mlops"
   lambda_role_arn = module.iam-settings.role_arn
 
-  image_uri = "${module.ecr.repository_url}:v2"
-
-  #alias_name = "prod"
-  # aliases = {
-  #   "prod" = "2"
-  #   "dev" = "$LATEST"
-  # }
+  image_uri = "${module.ecr.repository_url}:v5"
 
   aliases = {
     prod = {
-        version = "2"
+        version = "5"
         additional_weights = {
           # "2" = 0.4
-          "3" = 0.2
+          "6" = 0.4
         }
     }
     dev = {
-      version = "$LATEST"
+      version = "6"
       additional_weights = {}
     }
   }
